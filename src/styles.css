@@ -1,3 +1,8 @@
 agm-map {
     height: 300px;
 }
+
+.numeroPar {
+    background-color: aliceblue;
+    color: blue;
+}

@@ -7,3 +7,8 @@
     <li *ngIf="lugar.active">{{lugar.nombre}}</li>
   </ng-container>
 </ul>
+<ul>
+    <ng-container *ngFor="let lugar of lugares; let i = index">
+      <li [ngStyle]="{color : (lugar.active) ? 'black' : 'grey'}" [ngClass]="{numeroPar: (i+1) % 2 !== 0}">{{lugar.nombre}}</li>
+    </ng-container>
+  </ul>
