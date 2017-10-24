@@ -1,3 +1,4 @@
+// renderer to css
 import {Directive, OnInit, ElementRef, Renderer2, Input} from '@angular/core';
 @Directive({
     selector: '[resaltar]'

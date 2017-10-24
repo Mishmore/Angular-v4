@@ -1,3 +1,4 @@
+<!-- agm prefix to add angular google maps -->
 <agm-map [latitude]="lat" [longitude]="lng">
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 </agm-map>
@@ -7,8 +8,13 @@
         <div class="col-md-8">
             <h2>Lugares Cercanos</h2>
             <ul class="list-group">
+                <!-- ng- prefix to contain ng elements without errors -->
+                <!-- ngFor contitional: elm of {{name of array}} -->
                 <ng-container *ngFor="let lugar of lugares">
-                    <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view'}"><li *ngIf="lugar.active" class="list-group-item">{{lugar.nombre}}</li></a>
+                    <!-- routerLink to charge new routes withot recharge the browser -->
+                    <!-- queryParams to send params defined -->
+                    <!-- ngIf to conditional render -->
+                    <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view', referer: 'google'}"><li *ngIf="lugar.active" class="list-group-item">{{lugar.nombre}}</li></a>
                 </ng-container>
             </ul>
         </div>

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-lugares',
+    selector: 'app-lugares', //set selector
     templateUrl: './lugares.component.html'
 })
+
 export class LugaresComponent {
     title = 'PlatziSquare';
     lugares:any = [

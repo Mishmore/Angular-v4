@@ -1,5 +1,6 @@
 import { Directive, HostListener, HostBinding } from '@angular/core';
 @Directive ({
+    // Name of the selector including elm that will include it
     selector: 'li[contar-clicks]'
 })
 
