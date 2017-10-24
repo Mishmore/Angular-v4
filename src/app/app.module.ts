@@ -12,6 +12,7 @@ import { Routes, RouterModule } from '@angular/router'; // import Router to use 
 import { DetalleComponent } from './detalle/detalle.component';
 import { LugaresComponent } from './lugares/lugares.component';
 import { ContactoComponent } from './contact/contacto.component';
+import { LugaresServices } from './services/lugares.service';
 
 //Set path to new components' routes
 const appRoutes: Routes = [
@@ -38,8 +39,9 @@ const appRoutes: Routes = [
     }),
     RouterModule.forRoot(appRoutes) //import RouterModule
   ],
-  providers: [],
+  providers: [LugaresServices],
   bootstrap: [AppComponent] // import framework css
 })
+
 
 export class AppModule { }

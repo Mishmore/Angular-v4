@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LugaresServices } from '../services/lugares.service';
+import { LugaresComponent } from '../lugares/lugares.component';
  
 @Component({
     selector: 'app-detalle',
@@ -21,19 +23,14 @@ export class DetalleComponent {
     // Contains the information about a route associated with a component loaded in an outlet at a particular moment in time.
     // ActivatedRouteSnapshot can also be used to traverse the router state tree.
 
-    constructor(private route: ActivatedRoute) {
+    constructor(private route: ActivatedRoute, private lugarcito:LugaresServices) {
         console.log(this.route.snapshot.params['id']);
         console.log(this.route.queryParams);
         // Show the clicked id
         this.id = this.route.snapshot.params['id'];
-        console.log(this.buscarLugar())
-        this.lugar = this.buscarLugar();
+        console.log(this.lugarcito.buscarLugar(this.id))
+        this.lugar = this.lugarcito.buscarLugar(this.id);
         console.log('click');
-    }
-
-    // Show place with the id clicked
-    buscarLugar() {
-        return this.lugares.filter(lugar => lugar.id == this.id)[0] || null;
     }
  
 }
