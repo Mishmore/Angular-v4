@@ -18,7 +18,8 @@ export class LugaresServices{
     constructor(private afDB:AngularFireDatabase){}
 
     public getLugares() {
-        return this.lugares;
+        // requesting to DB API the list of updated 'lugares'
+        return this.afDB.list('lugares/');
     }
 
     public buscarLugar(id) {

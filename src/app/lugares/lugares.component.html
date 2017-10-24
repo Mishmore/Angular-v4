@@ -15,7 +15,7 @@
                     <!-- routerLink to charge new routes withot recharge the browser -->
                     <!-- queryParams to send params defined -->
                     <!-- ngIf to conditional render -->
-                    <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view', referer: 'google'}"><li *ngIf="lugar.active" class="list-group-item">{{lugar.nombre}}</li></a>
+                    <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{action: 'view', referer: 'google'}"><li class="list-group-item">{{lugar.nombre}}</li></a>
                 </ng-container>
             </ul>
         </div>

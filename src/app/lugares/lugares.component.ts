@@ -12,6 +12,10 @@ export class LugaresComponent {
     lng:number = -74.0595918;
     lugares = null;
     constructor(private lugaresService: LugaresServices){
-        this.lugares = lugaresService.getLugares();
+        lugaresService.getLugares()
+        // subscribe to promise of firebase DB
+        .valueChanges().subscribe(lugares => {
+            this.lugares = lugares;
+        })
     }
 }
