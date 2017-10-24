@@ -13,6 +13,7 @@ import { DetalleComponent } from './detalle/detalle.component';
 import { LugaresComponent } from './lugares/lugares.component';
 import { ContactoComponent } from './contact/contacto.component';
 import { LugaresServices } from './services/lugares.service';
+import { CrearComponent } from './crear/crear.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
@@ -23,14 +24,15 @@ const appRoutes: Routes = [
   { path: '', component: LugaresComponent },
   { path: 'lugares', component: LugaresComponent },
   { path: 'detalle/:id', component: DetalleComponent },
-  { path: 'contacto', component: ContactoComponent }  
+  { path: 'contacto', component: ContactoComponent },
+  { path: 'crear', component: CrearComponent }  
+  
 ];
 
 export const firebaseConfig = {
   apiKey: "AIzaSyB9TyJl1f0Bypd6TA4VtH6T99wxIlMDNus",
   authDomain: "platzisquare-1e53e.firebaseapp.com",
   databaseURL: "https://platzisquare-1e53e.firebaseio.com",
-  projectId: "platzisquare-1e53e",
   storageBucket: "platzisquare-1e53e.appspot.com",
   messagingSenderId: "466990525956"
 };
@@ -42,7 +44,8 @@ export const firebaseConfig = {
     ContarClicksDirective,
     DetalleComponent, //import components
     LugaresComponent,
-    ContactoComponent
+    ContactoComponent,
+    CrearComponent
   ],
   imports: [
   BrowserModule,
@@ -58,6 +61,7 @@ export const firebaseConfig = {
   providers: [LugaresServices],
   bootstrap: [AppComponent] // import framework css
 })
+
 
 
 export class AppModule { }

@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
 // A marker metadata that marks a class as available to Injector for creation.
 // Para que pueda ser inyectado en otros componentes y viceversa
 @Injectable()
@@ -13,11 +14,19 @@ export class LugaresServices{
         {id: 6, plan: 'gratuito', cercania: 3, distancia: 120, active: false, nombre:'Zapatería el Clavo', description: 'Pronto mas descripcion'}
     ];
 
+    // afDB:AngularFireDatabase => Refers to the the firebase DB module
+    constructor(private afDB:AngularFireDatabase){}
+
     public getLugares() {
         return this.lugares;
     }
 
     public buscarLugar(id) {
         return this.lugares.filter(lugar => lugar.id == id)[0] || null;
+    }
+    public guardarLugar(lugar) {
+        console.log(lugar);
+        // Saving data to '/lugares'
+        this.afDB.database.ref(`lugares/${lugar.id}`).set(lugar);
     }
 }
