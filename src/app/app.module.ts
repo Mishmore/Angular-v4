@@ -14,6 +14,10 @@ import { LugaresComponent } from './lugares/lugares.component';
 import { ContactoComponent } from './contact/contacto.component';
 import { LugaresServices } from './services/lugares.service';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 //Set path to new components' routes
 const appRoutes: Routes = [
   { path: '', component: LugaresComponent },
@@ -21,6 +25,15 @@ const appRoutes: Routes = [
   { path: 'detalle/:id', component: DetalleComponent },
   { path: 'contacto', component: ContactoComponent }  
 ];
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyB9TyJl1f0Bypd6TA4VtH6T99wxIlMDNus",
+  authDomain: "platzisquare-1e53e.firebaseapp.com",
+  databaseURL: "https://platzisquare-1e53e.firebaseio.com",
+  projectId: "platzisquare-1e53e",
+  storageBucket: "platzisquare-1e53e.appspot.com",
+  messagingSenderId: "466990525956"
+};
 
 @NgModule({
   declarations: [
@@ -37,7 +50,10 @@ const appRoutes: Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAdxVDrNzeEHwCahuVQQ7Jovhun60AvXBo'
     }),
-    RouterModule.forRoot(appRoutes) //import RouterModule
+    RouterModule.forRoot(appRoutes), //import RouterModule
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [LugaresServices],
   bootstrap: [AppComponent] // import framework css
