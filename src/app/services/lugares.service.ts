@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Http } from '@angular/http';
 // A marker metadata that marks a class as available to Injector for creation.
 // Para que pueda ser inyectado en otros componentes y viceversa
 @Injectable()
@@ -15,7 +16,7 @@ export class LugaresServices{
     ];
 
     // afDB:AngularFireDatabase => Refers to the the firebase DB module
-    constructor(private afDB:AngularFireDatabase){}
+    constructor(private afDB:AngularFireDatabase, private http: Http){}
 
     public getLugares() {
         // requesting to DB API the list of updated 'lugares'
@@ -25,9 +26,15 @@ export class LugaresServices{
     public buscarLugar(id) {
         return this.lugares.filter(lugar => lugar.id == id)[0] || null;
     }
+
     public guardarLugar(lugar) {
         console.log(lugar);
         // Saving data to '/lugares'
         this.afDB.database.ref(`lugares/${lugar.id}`).set(lugar);
+    }
+
+    public obtenerGeoData(direccion) {
+        // http://maps.google.com/maps/api/geocode/json?address=78-43+diagonal+70f,+Bogota,Colombia
+        return this.http.get(`http://maps.google.com/maps/api/geocode/json?address=${direccion}`);
     }
 }

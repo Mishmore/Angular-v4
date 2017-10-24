@@ -19,6 +19,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { HttpModule } from '@angular/http';
+
 //Set path to new components' routes
 const appRoutes: Routes = [
   { path: '', component: LugaresComponent },
@@ -56,11 +58,13 @@ export const firebaseConfig = {
     RouterModule.forRoot(appRoutes), //import RouterModule
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpModule
   ],
   providers: [LugaresServices],
   bootstrap: [AppComponent] // import framework css
 })
+
 
 
 
