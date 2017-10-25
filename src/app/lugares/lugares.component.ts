@@ -14,8 +14,11 @@ export class LugaresComponent {
     constructor(private lugaresService: LugaresServices){
         lugaresService.getLugares()
         // subscribe to promise of firebase DB
-        .valueChanges().subscribe(lugares => {
-            this.lugares = lugares;
+        .subscribe(lugares => {
+            this.lugares = lugares.json();
+            debugger;
+            this.lugares = Object.keys(this.lugares).map(key => this.lugares[key]);
+            debugger;
         })
     }
 }
