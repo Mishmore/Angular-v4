@@ -28,7 +28,7 @@ export class LugaresServices{
     }
 
     public guardarLugar(lugar) {
-        console.log(lugar);
+        //console.log(lugar);
         // Saving data to '/lugares'
         //this.afDB.database.ref(`lugares/${lugar.id}`).set(lugar);
         const headers = new Headers({"Content-type": "application/json"});

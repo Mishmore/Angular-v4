@@ -11,14 +11,16 @@ export class LugaresComponent {
     lat:number = 4.6560663;
     lng:number = -74.0595918;
     lugares = null;
+    error = null;
     constructor(private lugaresService: LugaresServices){
         lugaresService.getLugares()
         // subscribe to promise of firebase DB
         .subscribe(lugares => {
             this.lugares = lugares.json();
-            debugger;
             this.lugares = Object.keys(this.lugares).map(key => this.lugares[key]);
-            debugger;
+        }, error => {
+            console.log(error);
+            this.error = true;;
         })
     }
 }
